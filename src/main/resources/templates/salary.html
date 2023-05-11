@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//www.thymeleaf.org" >
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Payroll</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alatsi&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alkalami&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers&amp;display=swap">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/aos.min.css">
+    <link rel="stylesheet" href="/assets/css/Features-Large-Icons-icons.css">
+    <link rel="stylesheet" href="/assets/css/formmmm.css">
+    <link rel="stylesheet" href="/assets/css/infoemp.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Cool-SB-Admin-Inspirate.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Menu-sidebar.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Menu.css">
+    <link rel="stylesheet" href="/assets/css/SIdebar-Responsive-2-ResponsiveSideBar-2.css">
+    <link rel="stylesheet" href="/assets/css/SIdebar-Responsive-2.css">
+    <link rel="stylesheet" href="/assets/css/Toggle-Buttons.css">
+</head>
+
+<body>
+<div th:replace="fragment.html::SlideBar"></div>
+    <div id="wrapper">
+
+        <div class="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xxl-12" style="background: #231b5c;height: 120px;">
+                        <div></div>
+                        <h1 data-aos="fade-right" data-aos-delay="250" style="text-align: right;font-family: Alkalami, serif;color: rgb(35,27,92);background: #231b5c;"><span style="color: rgb(255, 255, 255);">&nbsp; &nbsp; Salary&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><img class="border rounded-0" src="/assets/img/Screenshot__128_23.png" width="129" height="116" style="background: #ffffff;"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form method="post">
+            <div class="container border-0 border-white">
+                <div class="row">
+                    <div class="col-md-6 col-lg-8 col-xxl-8" style="height: 70px;"><input class="border rounded-pill border-dark form-control" type="search" id="tSearch" style="font-size: 18px;margin-top: 20px;" placeholder="search here..."></div>
+                </div>
+            </div>
+            <div class="card" style="margin: 4px 10px 0px;margin-right: 10px;margin-left: 10px;margin-top: 10px;">
+                <div class="card-body shadow" style="padding: 0px;">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr class="border-dark" style="font-size: 17px;font-weight: bold;background: rgba(13,110,253,0.29);">
+                                    <th style="font-size: 20px;text-align: center;">ID</th>
+                                    <th style="width: 250px;text-align: center;font-size: 20px;">NAME</th>
+                                    <th style="text-align: center;font-size: 20px;">Present Days</th>
+                                    <th style="text-align: center;font-size: 20px;">Half Days</th>
+                                    <th style="text-align: center;font-size: 20px;">Absent Days</th>
+                                    <th style="text-align: center;font-size: 20px;">SALARY</th>
+                                    <th style="text-align: center;font-size: 20px;">HRA</th>
+                                    <th style="text-align: center;font-size: 20px;">TA</th>
+                                    <th style="text-align: center;font-size: 20px;">A1</th>
+                                    <th style="text-align: center;font-size: 20px;">A2</th>
+                                    <th style="text-align: center;font-size: 20px;">Total</th>
+                                    <th style="font-size: 20px;text-align: center;">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody style="background: rgba(30,107,222,0.07);text-align: center;">
+                                <tr th:each="emp :${listEmp}">
+                                    <td style="text-align: center;font-size: 18px;" th:text="${emp.id}">1.</td>
+                                    <td style="text-align: center;font-size: 18px;" th:text="${emp.name + ' ' + emp.lname}">Akshata</td>
+                                    <td style="text-align: center;" th:text="${attendanceRepo.countStatusCurrentMonth(emp.id, 0)}">15</td>
+                                    <td style="text-align: center;" th:text="${attendanceRepo.countStatusCurrentMonth(emp.id, 1)}">2</td>
+                                    <td style="text-align: center;" th:text="${attendanceRepo.countStatusCurrentMonth(emp.id, 2)}">13</td>
+                                    <td style="text-align: center;" th:text="${emp.salary}">20000</td>
+                                    <td style="text-align: center;" th:text="${emp.hra}">1000</td>
+                                    <td style="text-align: center;" th:text="${emp.ta}">1000</td>
+                                    <td style="text-align: center;" th:text="${emp.a1}">500</td>
+                                    <td style="text-align: center;" th:text="${emp.a2}">500</td>
+                                    <td style="text-align: center;" th:text="${(emp.salary + emp.hra + emp.ta + emp.a1 + emp.a2) * attendanceRepo.countStatusCurrentMonth(emp.id, 0) + ((emp.salary + emp.hra + emp.ta + emp.a1 + emp.a2)/2) * attendanceRepo.countStatusCurrentMonth(emp.id, 1)} " >18000</td>
+                                    <td style="text-align: center;"><a class="btn btn-warning bg-danger" role="button"><i class="fa fa-trash text-dark" style="color: rgb(248,244,244);font-size: 20px;"></i>&nbsp;<strong>Delete</strong></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/aos.min.js"></script>
+    <script src="/assets/js/bs-init.js"></script>
+    <script src="/assets/js/Sidebar-Menu-sidebar.js"></script>
+</body>
+
+</html>

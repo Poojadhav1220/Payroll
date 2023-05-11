@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Payroll</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alatsi&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alkalami&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers&amp;display=swap">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/aos.min.css">
+    <link rel="stylesheet" href="/assets/css/Features-Large-Icons-icons.css">
+    <link rel="stylesheet" href="/assets/css/formmmm.css">
+    <link rel="stylesheet" href="/assets/css/infoemp.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Cool-SB-Admin-Inspirate.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Menu-sidebar.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Menu.css">
+    <link rel="stylesheet" href="/assets/css/SIdebar-Responsive-2-ResponsiveSideBar-2.css">
+    <link rel="stylesheet" href="/assets/css/SIdebar-Responsive-2.css">
+    <link rel="stylesheet" href="/assets/css/Toggle-Buttons.css">
+</head>
+
+<body>
+<div th:replace="fragment.html::SlideBar"></div>
+
+<div id="wrapper">
+
+        <div class="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xxl-12" style="background: #231b5c;">
+                        <div></div>
+                        <h1 data-aos="fade-right" data-aos-delay="250" style="text-align: right;font-family: Alkalami, serif;color: rgb(35,27,92);background: #231b5c;"><span style="color: rgb(255, 255, 255);">Profile</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img class="border rounded-0" src="/assets/img/Screenshot__128_23.png" width="127" height="122" style="background: #ffffff;"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <form method="post" ACTION="/admin/profileSave/" th:object="${Employee}" enctype="multipart/form-data" >
+
+        <input type="hidden" id="id" name="id" th:value="${emp.id}">
+
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4">Profile</h3>
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <div class="card mb-3">
+                              <div> <input  type="file" name="file" required="" accept="image/*"></div>
+                                <div class="card-body text-center shadow"><img class="border rounded-circle mb-3 mt-4" th:src="@{/assets/img/{fileName}/(fileName = ${emp.id + '.' + emp.exe})}" width="160" height="160">
+                                    <div class="mb-3"><button class="btn btn-primary btn-sm" type="button" style="background: rgb(13, 110, 253);">Change Photo</button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row mb-3 d-none">
+                                <div class="col">
+                                    <div class="card text-white bg-primary shadow">
+                                        <div class="card-body">
+                                            <div class="row mb-2">
+                                                <div class="col">
+                                                    <p class="m-0">Peformance</p>
+                                                    <p class="m-0"><strong>65.2%</strong></p>
+                                                </div>
+                                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                            </div>
+                                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card text-white bg-success shadow">
+                                        <div class="card-body">
+                                            <div class="row mb-2">
+                                                <div class="col">
+                                                    <p class="m-0">Peformance</p>
+                                                    <p class="m-0"><strong>65.2%</strong></p>
+                                                </div>
+                                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                            </div>
+                                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card shadow mb-3">
+                                        <div class="col">
+                                            <div class="card shadow mb-3">
+                                                <div class="card-header py-3">
+                                                    <p class="text-primary m-0 fw-bold" style="color: rgb(7,26,54);font-size: 17px;"><span style="color: rgb(44, 121, 235);">Employee Details</span></p>
+                                                </div>
+                                                <div class="card-body">
+
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="mb-3"><label class="form-label" id="first_name-1"><strong>First Name</strong></label><input class="form-control" type="text" id="first_name-2" name="name" th:value="${emp.name}" autofocus=""></div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="mb-3"><label class="form-label" ><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name-1" name="lname" th:value="${emp.lname}"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <div class="mb-3"><label class="form-label" for="contact_no"><strong>Contact No.</strong></label><input class="form-control" type="text" id="contact_no" name="contact" th:value="${emp.contact}" required=""></div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="mb-3"><label class="form-label" ><strong>Email Address</strong></label><input class="form-control" type="email" id="email-1" name="email" th:value="${emp.email}" required=""></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xxl-6">
+                                                                <div class="mb-3"><label class="form-label" for="designation"><strong>Designation</strong></label><input class="form-control" type="text" id="designation" name="designation" th:value="${emp.designation}" required=""></div>
+                                                            </div>
+                                                        </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 fw-bold"><span style="color: rgb(27, 50, 84);">Contact Settings</span></p>
+                                        </div>
+                                        <div class="card-body">
+
+                                                <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" th:value="${emp.address}" name="address"></div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input class="form-control" type="text" id="city" th:value="${emp.city}" name="city"></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" th:value="${emp.country}"  name="country"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="card shadow mb-5" style="text-align: center;"></div>
+                                                </div>
+
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center;"><button class="btn btn-primary btn-sm" type="submit" style="background: rgb(35,27,92);text-align: right;">Save&nbsp;Settings</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer"></footer>
+        </div>
+    </form>
+</div>
+    <div style="background: #231b5c;"></div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/aos.min.js"></script>
+    <script src="/assets/js/bs-init.js"></script>
+    <script src="/assets/js/Sidebar-Menu-sidebar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//www.thymeleaf.org" >
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Payroll</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alatsi&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alkalami&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers&amp;display=swap">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/aos.min.css">
+    <link rel="stylesheet" href="/assets/css/Features-Large-Icons-icons.css">
+    <link rel="stylesheet" href="/assets/css/formmmm.css">
+    <link rel="stylesheet" href="/assets/css/infoemp.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Cool-SB-Admin-Inspirate.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Menu-sidebar.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Menu.css">
+    <link rel="stylesheet" href="/assets/css/SIdebar-Responsive-2-ResponsiveSideBar-2.css">
+    <link rel="stylesheet" href="/assets/css/SIdebar-Responsive-2.css">
+    <link rel="stylesheet" href="/assets/css/Toggle-Buttons.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+        function filterTbl(input) {
+		  var input, filter, table, tr, td, cell, i, j;
+		  input = document.getElementById("tSearch");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("tbl");
+		  tr = table.getElementsByTagName("tr");
+		  for (i = 1; i < tr.length; i++) {
+		    // Hide the row initially.
+		    tr[i].style.display = "none";
+
+		    td = tr[i].getElementsByTagName("td");
+		    for (var j = 0; j < td.length; j++) {
+		      cell = tr[i].getElementsByTagName("td")[j];
+		      if (cell) {
+		        if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
+		          tr[i].style.display = "";
+		          break;
+		        }
+		      }
+		    }
+		  }
+		}
+    </script>
+</head>
+
+<body style="background: #eff5fd;min-width: 800px;">
+       <script th:inline="javascript">
+        var msg = [[${msg}]]
+
+        if(msg != null)
+        {
+            swal("Employee Registration", msg, "success");
+        }
+        else
+        {
+             swal("Employee Deleted", msg, "error");
+        }
+
+        function showData(id, name, lname, contact, email, password, salary, hra, ta, a1, a2)
+        {
+          $('#id').val(id);
+          $('#first_name').val(name);
+          $('#last_name').val(lname);
+          $('#contact_no').val(contact)
+          $('#email').val(email);
+          $('#password').val(password);
+          $('#basic_salary').val(salary);
+          $('#HRA').val(hra);
+          $('#TA').val(ta);
+          $('#A1').val(a1);
+          $('#A2').val(a2);
+        }
+       </script>
+       <div th:replace="fragment.html::SlideBar"></div>
+    <div id="wrapper">
+
+        <div class="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xxl-12" style="background: #231b5c;height: 120px;">
+                        <div></div>
+                        <h1 data-aos="fade-right" data-aos-delay="250" style="text-align: right;font-family: Alkalami, serif;color: rgb(35,27,92);background: #231b5c;"><span style="color: rgb(255, 255, 255);">&nbsp; Add Employee&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><img class="border rounded-0" src="/assets/img/Screenshot__128_23.png" width="129" height="116" style="background: #ffffff;"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form method="post" ACTION="/admin/empSave/" th:object="${Employee}">
+            <input type="hidden" name="id" id="id">
+            <div class="container border-0 border-white">
+                <div class="row">
+                    <div class="col-md-6 col-xxl-1" style="width: 120px;"><button class="btn btn-primary" type="submit" style="height: 60px;width: 100px;margin-top: 10px;font-family: Alkalami, serif;font-size: 16px;background: rgb(35,27,92);" data-bs-target="#modal-1" data-bs-toggle="modal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -32 576 576" width="1em" height="1em" fill="currentColor" style="font-size: 41px;">
+                                <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+                                <path d="M208 48C208 74.51 186.5 96 160 96C133.5 96 112 74.51 112 48C112 21.49 133.5 0 160 0C186.5 0 208 21.49 208 48zM152 352V480C152 497.7 137.7 512 120 512C102.3 512 88 497.7 88 480V256.9L59.43 304.5C50.33 319.6 30.67 324.5 15.52 315.4C.3696 306.3-4.531 286.7 4.573 271.5L62.85 174.6C80.2 145.7 111.4 128 145.1 128H174.9C208.6 128 239.8 145.7 257.2 174.6L302.1 249.3C285.1 266.9 273.4 287.7 265.5 310.8C263.6 308.9 261.1 306.8 260.6 304.5L232 256.9V480C232 497.7 217.7 512 200 512C182.3 512 168 497.7 168 480V352L152 352zM288 368C288 288.5 352.5 224 432 224C511.5 224 576 288.5 576 368C576 447.5 511.5 512 432 512C352.5 512 288 447.5 288 368zM448 303.1C448 295.2 440.8 287.1 432 287.1C423.2 287.1 416 295.2 416 303.1V351.1H368C359.2 351.1 352 359.2 352 367.1C352 376.8 359.2 383.1 368 383.1H416V431.1C416 440.8 423.2 447.1 432 447.1C440.8 447.1 448 440.8 448 431.1V383.1H496C504.8 383.1 512 376.8 512 367.1C512 359.2 504.8 351.1 496 351.1H448V303.1z"></path>
+                            </svg></button></div>
+                    <div class="col-md-6 col-lg-8 col-xxl-8"><input class="border rounded-pill border-dark form-control" type="search" id="tSearch" onkeydown="filterTbl()" style="font-size: 18px;margin-top: 20px;" placeholder="search here..."></div>
+                </div>
+            </div>
+            <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background: #bbd4fc;min-width: 800px;">
+                            <h4 class="modal-title" style="font-family: 'Alfa Slab One', serif;font-weight: bold;color: #231b5c;background: #bbd4fc;">Add Employee !!</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="background: #eff5fd;min-width: 800px;">
+                            <div class="d-flex flex-column" id="content-wrapper">
+                                <div id="content">
+                                    <div class="container-fluid">
+                                        <div class="row mb-3">
+                                            <div class="col-lg-8 col-xxl-12">
+                                                <div class="row mb-3 d-none">
+                                                    <div class="col">
+                                                        <div class="card text-white bg-primary shadow">
+                                                            <div class="card-body">
+                                                                <div class="row mb-2">
+                                                                    <div class="col">
+                                                                        <p class="m-0">Peformance</p>
+                                                                        <p class="m-0"><strong>65.2%</strong></p>
+                                                                    </div>
+                                                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                                                </div>
+                                                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="card text-white bg-success shadow">
+                                                            <div class="card-body">
+                                                                <div class="row mb-2">
+                                                                    <div class="col">
+                                                                        <p class="m-0">Peformance</p>
+                                                                        <p class="m-0"><strong>65.2%</strong></p>
+                                                                    </div>
+                                                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                                                </div>
+                                                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="card shadow mb-3">
+                                                            <div class="card-header py-3">
+                                                                <p class="text-primary m-0 fw-bold" style="color: rgb(7,26,54);font-size: 17px;"><span style="color: rgb(44, 121, 235);">Employee Details</span></p>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <div class="mb-3"><label class="form-label"  for="first_name"><strong>First Name</strong></label><input  class="form-control" type="text" id="first_name" name="name" required ></div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div class="mb-3"><label class="form-label" ><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name" name="lname" required ></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <div class="mb-3"><label class="form-label" for="contact_no"><strong>Contact No.</strong></label><input class="form-control" type="text" id="contact_no" name="contact" required ></div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div class="mb-3"><label class="form-label" ><strong>Email Address</strong></label><input class="form-control" type="email" id="email" name="email" required ></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                        <div class="mb-3"><label class="form-label"  ><strong>Password</strong></label><input class="form-control" type="password" id="password" name="password" required></div>
+                                                                        </div>
+                                                                        <div class="col"></div>
+                                                                    </div>
+
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="card shadow">
+                                                            <div class="card-header py-3">
+                                                                <p class="text-primary m-0 fw-bold">Salary Details</p>
+                                                            </div>
+                                                            <div class="card-body">
+
+                                                                    <div class="mb-3"><label class="form-label" for="basic_salary"><strong>Basic Salary</strong></label><input class="form-control" type="text" id="basic_salary" name="salary" required></div>
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <div class="mb-3"><label class="form-label" ><strong>HRA</strong></label><input class="form-control" type="text" id="HRA" name="hra"></div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div class="mb-3"><label class="form-label" ><strong>TA</strong></label><input class="form-control" type="text" id="TA" name="ta"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <div class="mb-3"><label class="form-label" ><strong>A1</strong></label><input class="form-control" type="text" id="A1" name="a1"></div>
+                                                                        </div>
+                                                                        <div class="col">
+                                                                            <div class="mb-3"><label class="form-label" ><strong>A2</strong></label><input class="form-control" type="text" id="A2" name="a2"></div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3" style="padding-top: 8px;text-align: center;">
+                                                        <button class="btn btn-primary btn-sm" type="submit"><strong>Save</strong></button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <footer class="bg-white sticky-footer">
+                                    <div class="container my-auto">
+                                        <div class="text-center my-auto copyright"></div>
+                                    </div>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="margin: 4px 10px 0px;margin-right: 10px;margin-left: 10px;margin-top: 5px;">
+                <div class="card-body shadow" style="padding: 0px;">
+                    <div class="table-responsive">
+                        <table class="table" id="tbl">
+                            <thead>
+                                <tr class="border-dark" style="font-size: 17px;font-weight: bold;background: rgba(13,110,253,0.29);">
+                                    <th style="font-size: 20px;">ID</th>
+                                    <th style="width: 250px;text-align: left;font-size: 20px;">NAME</th>
+
+                                    <th style="width: 250px;text-align: left;font-size: 20px;">DETAILS</th>
+                                    <th style="font-size: 20px;">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody style="background: rgba(30,107,222,0.07);">
+                                <tr th:each="emp :${listEmp}">
+
+                                    <td style="text-align: center;font-size: 18px;" th:text="${emp.id}"></td>
+                                    <td style="text-align: left;font-size: 18px;"th:text="${emp.name + ' ' + emp.lname}"></td>
+                                    <td style="text-align: left;"><button class="btn btn-info" type="button" style="font-size: 18px;" data-bs-target="#modal-1" data-bs-toggle="modal" th:onClick="showData([[${emp.id}]], [[${emp.name}]], [[${emp.lname}]], [[${emp.contact}]], [[${emp.email}]], [[${emp.password}]], [[${emp.salary}]], [[${emp.hra}]], [[${emp.ta}]], [[${emp.a1}]], [[${emp.a2}]])" ><i class="fas fa-chevron-circle-down" style="font-size: 22px;"></i><strong>&nbsp;Update</strong></button></td>
+                                    <td><a th:href="@{/admin/empDelete/{empID}/(empID=${emp.id})}" class="btn btn-warning bg-danger" role="button"><i class="fa fa-trash text-dark" style="color: rgb(248,244,244);font-size: 20px;"></i>&nbsp;<strong>Delete</strong></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/aos.min.js"></script>
+    <script src="/assets/js/bs-init.js"></script>
+    <script src="/assets/js/Sidebar-Menu-sidebar.js"></script>
+</body>
+
+</html>

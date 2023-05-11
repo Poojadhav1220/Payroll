@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//www.thymeleaf.org" >
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Payroll</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alatsi&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alkalami&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers&amp;display=swap">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/aos.min.css">
+    <link rel="stylesheet" href="/assets/css/Features-Large-Icons-icons.css">
+    <link rel="stylesheet" href="/assets/css/formmmm.css">
+    <link rel="stylesheet" href="/assets/css/infoemp.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Cool-SB-Admin-Inspirate.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Menu-sidebar.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Menu.css">
+    <link rel="stylesheet" href="/assets/css/SIdebar-Responsive-2-ResponsiveSideBar-2.css">
+    <link rel="stylesheet" href="/assets/css/SIdebar-Responsive-2.css">
+    <link rel="stylesheet" href="/assets/css/Toggle-Buttons.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="/assets/js/attendanceHandler.js"></script>
+</head>
+
+<body>
+<div th:replace="fragment.html::SlideBar"></div>
+    <div id="wrapper">
+
+        <div class="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xxl-12" style="height: 120px;background: #231b5c;">
+                        <div></div>
+                        <h1 data-aos="fade-right" data-aos-delay="250" style="text-align: right;font-family: Alkalami, serif;color: rgb(35,27,92);background: #231b5c;"><span style="color: rgb(255, 255, 255);">Attendance</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<img class="border rounded-0" src="/assets/img/Screenshot__128_23.png" width="133" height="114" style="background: #ffffff;"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form method="post">
+            <div class="container border-0 border-white" style="padding-top: 10px;">
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-md-6 col-lg-8 col-xxl-12 d-xxl-flex justify-content-xxl-center" style="text-align: center;"><input class="form-control form-control-lg" type="date" style="width: 200px;text-align: center;" id="date" name="date" th:value="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}"></div>
+                    <div class="col" style="margin-top: 20px;">
+                        <div class="table-responsive" style="font-size: 30px;">
+                            <table class="table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody class="shadow" style="box-shadow: 0px 0px;">
+                                    <tr class="fs-4" style="background: #b9d5fe;">
+                                        <td class="fs-4" style="font-family: Alkalami, serif;width: 100px;">ID</td>
+                                        <td class="fs-4" style="font-family: Alkalami, serif;width: 200px;">Name</td>
+                                        <td class="fs-4" style="font-family: Alkalami, serif;text-align: center;">Attendance</td>
+                                    </tr>
+                                    <tr style="background: #eff5fd;" th:each="emp : ${listEmp}">
+                                        <td class="fs-5" style="font-family: Alkalami, serif;width: 100px;" th:text="${emp.id}">1</td>
+                                        <td class="fs-5" style="font-family: Alkalami, serif;width: 200px;" th:text="${emp.name + ' ' + emp.lname}">Akshata</td>
+                                        <td class="fs-3" style="font-weight: bold;font-family: Alkalami, serif;max-width: 177.663px;width: 177px;text-align: center;">
+                                            <div class="btn-group" role="group" aria-label="Check Attendance">
+
+                                                <input type="radio" th:onClick="markAttendance([[${emp.id}]], 0)" th:id="${'rAttendance_present_' + emp.id}" class="btn-check" th:name="${'rAttendance_' + emp.id}" autocomplete="off" th:checked="${attendanceRepo.getByIdEmpAndCurrentDate(emp.id)?.getStatus() == 0}">
+                                                <label class="form-label btn btn-outline-primary" th:for="${'rAttendance_present_' + emp.id}">Present</label>
+
+                                                <input type="radio" th:onClick="markAttendance([[${emp.id}]], 1)" th:id="${'rAttendance_halfday_' + emp.id}" class="btn-check" th:name="${'rAttendance_' + emp.id}" autocomplete="off" th:checked="${attendanceRepo.getByIdEmpAndCurrentDate(emp.id)?.getStatus() == 1}">
+                                                <label class="form-label btn btn-outline-primary" th:for="${'rAttendance_halfday_' + emp.id}">Half Day</label>
+
+                                                <input type="radio" th:onClick="markAttendance([[${emp.id}]], 2)" th:id="${'rAttendance_absent_' + emp.id}" class="btn-check" th:name="${'rAttendance_' + emp.id}" autocomplete="off" th:checked="${attendanceRepo.getByIdEmpAndCurrentDate(emp.id)?.getStatus() == 2}">
+                                                <label class="form-label btn btn-outline-primary" th:for="${'rAttendance_absent_' + emp.id}">Absent</label></div>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/axios.min.js"></script>
+    <script src="/assets/js/bs-init.js"></script>
+    <script src="/assets/js/Sidebar-Menu-sidebar.js"></script>
+</body>
+
+</html>

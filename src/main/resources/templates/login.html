@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https//www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Payroll</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alatsi&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alkalami&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers&amp;display=swap">
+    <link rel="stylesheet" href="/assets/css/Features-Large-Icons-icons.css">
+    <link rel="stylesheet" href="/assets/css/formmmm.css">
+    <link rel="stylesheet" href="/assets/css/infoemp.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Cool-SB-Admin-Inspirate.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Menu-sidebar.css">
+    <link rel="stylesheet" href="/assets/css/Sidebar-Menu.css">
+    <link rel="stylesheet" href="/assets/css/SIdebar-Responsive-2-ResponsiveSideBar-2.css">
+    <link rel="stylesheet" href="/assets/css/SIdebar-Responsive-2.css">
+    <link rel="stylesheet" href="/assets/css/Toggle-Buttons.css">
+</head>
+
+<body style="background: var(--bs-white);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-xxl-5 offset-xxl-0"><img src="/assets/img/new2.png" width="558" height="679"></div>
+            <div class="col-md-6 col-xxl-5 offset-xxl-1" style=" margin-top: 23px";>
+                <div class="card mb-5" style="margin-top: 44px" ;>
+                    <div class="card-body p-sm-5" style="--bs-body-bg: #fff;background: rgba(81,138,202,0.2);">
+                        <h2 class="text-center mb-4"><img src="/assets/img/Screenshot__128_23.png" width="154" height="199" style="text-align: center;"></h2>
+
+                        <div th:if="${param.error}" class="alert alert-danger">
+                            Invalid username and password.</div>
+                        <div th:if="${param.logout}" class="alert alert-danger">
+                            You have been logged out.</div>
+
+                        <form method="post" action="/login">
+
+                                <div class="mb-3"><input class="form-control" type="email" id="email" name="email" style="font-size: 22px;margin-top: 5px;" placeholder="Enter Your Email" /></div>
+                                <div class="mb-3"><input class="form-control" type="password" id="password" name="password" style="font-size: 22px;margin-top: 52px;" placeholder="Enter Your Password" /></div>
+                            <p><input type="checkbox" id="remember_me" name="remember_me"> Remember me on this computer.</p>
+                            <div class="mb-3"><button class="btn btn-primary border rounded-pill border-3 d-block w-100" type="submit" style="font-size: 22px;font-family: Bangers, serif;background: #26206f;margin-top: 40px;">Login</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/bs-init.js"></script>
+    <script src="/assets/js/Sidebar-Menu-sidebar.js"></script>
+</body>
+
+</html>
