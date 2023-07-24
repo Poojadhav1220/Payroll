@@ -24,6 +24,30 @@
     <link rel="stylesheet" href="/assets/css/SIdebar-Responsive-2-ResponsiveSideBar-2.css">
     <link rel="stylesheet" href="/assets/css/SIdebar-Responsive-2.css">
     <link rel="stylesheet" href="/assets/css/Toggle-Buttons.css">
+    <script>
+        function filterTbl(input) {
+		  var input, filter, table, tr, td, cell, i, j;
+		  input = document.getElementById("tSearch");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("tbl");
+		  tr = table.getElementsByTagName("tr");
+		  for (i = 1; i < tr.length; i++) {
+		    // Hide the row initially.
+		    tr[i].style.display = "none";
+
+		    td = tr[i].getElementsByTagName("td");
+		    for (var j = 0; j < td.length; j++) {
+		      cell = tr[i].getElementsByTagName("td")[j];
+		      if (cell) {
+		        if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
+		          tr[i].style.display = "";
+		          break;
+		        }
+		      }
+		    }
+		  }
+		}
+    </script>
 </head>
 
 <body>
@@ -43,13 +67,13 @@
         <form method="post">
             <div class="container border-0 border-white">
                 <div class="row">
-                    <div class="col-md-6 col-lg-8 col-xxl-8" style="height: 70px;"><input class="border rounded-pill border-dark form-control" type="search" id="tSearch" style="font-size: 18px;margin-top: 20px;" placeholder="search here..."></div>
+                    <div class="col-md-6 col-lg-8 col-xxl-8" style="height: 70px;"><input class="border rounded-pill border-dark form-control" type="search" id="tSearch" onkeydown="filterTbl()" style="font-size: 18px;margin-top: 20px;" placeholder="search here..."></div>
                 </div>
             </div>
             <div class="card" style="margin: 4px 10px 0px;margin-right: 10px;margin-left: 10px;margin-top: 10px;">
                 <div class="card-body shadow" style="padding: 0px;">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="tbl">
                             <thead>
                                 <tr class="border-dark" style="font-size: 17px;font-weight: bold;background: rgba(13,110,253,0.29);">
                                     <th style="font-size: 20px;text-align: center;">ID</th>
@@ -63,7 +87,7 @@
                                     <th style="text-align: center;font-size: 20px;">A1</th>
                                     <th style="text-align: center;font-size: 20px;">A2</th>
                                     <th style="text-align: center;font-size: 20px;">Total</th>
-                                    <th style="font-size: 20px;text-align: center;">ACTION</th>
+
                                 </tr>
                             </thead>
                             <tbody style="background: rgba(30,107,222,0.07);text-align: center;">
@@ -73,13 +97,12 @@
                                     <td style="text-align: center;" th:text="${attendanceRepo.countStatusCurrentMonth(emp.id, 0)}">15</td>
                                     <td style="text-align: center;" th:text="${attendanceRepo.countStatusCurrentMonth(emp.id, 1)}">2</td>
                                     <td style="text-align: center;" th:text="${attendanceRepo.countStatusCurrentMonth(emp.id, 2)}">13</td>
-                                    <td style="text-align: center;" th:text="${emp.salary}">20000</td>
-                                    <td style="text-align: center;" th:text="${emp.hra}">1000</td>
-                                    <td style="text-align: center;" th:text="${emp.ta}">1000</td>
-                                    <td style="text-align: center;" th:text="${emp.a1}">500</td>
-                                    <td style="text-align: center;" th:text="${emp.a2}">500</td>
-                                    <td style="text-align: center;" th:text="${(emp.salary + emp.hra + emp.ta + emp.a1 + emp.a2) * attendanceRepo.countStatusCurrentMonth(emp.id, 0) + ((emp.salary + emp.hra + emp.ta + emp.a1 + emp.a2)/2) * attendanceRepo.countStatusCurrentMonth(emp.id, 1)} " >18000</td>
-                                    <td style="text-align: center;"><a class="btn btn-warning bg-danger" role="button"><i class="fa fa-trash text-dark" style="color: rgb(248,244,244);font-size: 20px;"></i>&nbsp;<strong>Delete</strong></a></td>
+                                    <td style="text-align: right;" th:text="${emp.salary}">20000</td>
+                                    <td style="text-align: right;" th:text="${emp.hra}">1000</td>
+                                    <td style="text-align: right;" th:text="${emp.ta}">1000</td>
+                                    <td style="text-align: right;" th:text="${emp.a1}">500</td>
+                                    <td style="text-align: right;" th:text="${emp.a2}">500</td>
+                                    <td style="text-align: right;" th:text="${(emp.salary + emp.hra + emp.ta + emp.a1 + emp.a2) * attendanceRepo.countStatusCurrentMonth(emp.id, 0) + ((emp.salary + emp.hra + emp.ta + emp.a1 + emp.a2)/2) * attendanceRepo.countStatusCurrentMonth(emp.id, 1)} " >18000</td>
                                 </tr>
                             </tbody>
                         </table>

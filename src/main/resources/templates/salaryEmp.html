@@ -40,7 +40,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header" style="background: #bbd4fc;min-width: 800px;">
-                                <h4 class="modal-title" style="font-family: 'Alfa Slab One', serif;font-weight: bold;color: #231b5c;background: #bbd4fc;font-size: 28px;">Salary Details !!</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <h4 class="modal-title" style="font-family: 'Alfa Slab One', serif;font-weight: normal;color: #231b5c;background: #bbd4fc;font-size: 28px;">Salary Details !!</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body" style="background: #eff5fd;min-width: 800px;">
                                 <div class="d-flex flex-column" id="content-wrapper">
@@ -118,35 +118,35 @@
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td class="d-xxl-flex justify-content-xxl-center align-items-xxl-center" style="font-family: 'Alfa Slab One', serif;font-size: 19px;font-weight: bold;"><span style="font-weight: normal !important;">Salary</span></td>
+                                                                                        <td class="d-xxl-flex justify-content-xxl-center align-items-xxl-center" style="font-family: 'Alkalami, serif', serif;font-size: 19px;font-weight: bold;"><span style="font-weight: normal !important;">Salary</span></td>
                                                                                         <td style="text-align: center;" th:text="${emp.salary}"></td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alfa Slab One', serif;font-weight: bold;"><span style="font-weight: normal !important;">HRA</span></td>
+                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alkalami, serif', serif;font-weight: bold;"><span style="font-weight: normal !important;">HRA</span></td>
                                                                                         <td style="text-align: center;" th:text="${emp.hra}"></td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alfa Slab One', serif;font-weight: bold;"><span style="font-weight: normal !important;">TA</span></td>
+                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alkalami, serif', serif;font-weight: bold;"><span style="font-weight: normal !important;">TA</span></td>
                                                                                         <td style="text-align: center;" th:text="${emp.ta}"></td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alfa Slab One', serif;font-weight: bold;"><span style="font-weight: normal !important;">A1</span></td>
+                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alkalami, serif', serif;font-weight: bold;"><span style="font-weight: normal !important;">A1</span></td>
                                                                                         <td style="text-align: center;" th:text="${emp.a1}"></td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alfa Slab One', serif;font-weight: bold;"><span style="font-weight: normal !important;">A2</span></td>
+                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alkalami, serif', serif;font-weight: bold;"><span style="font-weight: normal !important;">A2</span></td>
                                                                                         <td style="text-align: center;" th:text="${emp.a2}"></td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alfa Slab One', serif;font-weight: bold;"><span style="font-weight: normal !important;">Present Day</span></td>
+                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alkalami, serif', serif;font-weight: bold;"><span style="font-weight: normal !important;">Present Day</span></td>
                                                                                         <td style="text-align: center;" th:text="${attendanceRepo.countStatusCurrentMonth(emp.id, 0)}"></td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alfa Slab One', serif;font-weight: bold;" ><span style="font-weight: normal !important;">Absent Day</span></td>
+                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alkalami, serif', serif;font-weight: bold;" ><span style="font-weight: normal !important;">Absent Day</span></td>
                                                                                         <td style="text-align: center;" th:text="${attendanceRepo.countStatusCurrentMonth(emp.id, 2)}"></td>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alfa Slab One', serif;font-weight: bold;"><span style="font-weight: normal !important;">Half Day</span></td>
+                                                                                        <td class="d-xxl-flex justify-content-xxl-center" style="font-size: 19px;font-family: 'Alkalami, serif', serif;font-weight: bold;"><span style="font-weight: normal !important;">Half Day</span></td>
                                                                                         <td style="text-align: center;" th:text="${attendanceRepo.countStatusCurrentMonth(emp.id, 1)}"></td>
                                                                                     </tr>
                                                                                     <tr>
@@ -160,7 +160,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col text-center"><button class="btn btn-primary text-center" type="button">Save</button></div>
                                                     </div>
                                                 </div>
                                             </div>

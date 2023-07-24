@@ -155,15 +155,15 @@
                                                             <div class="card-body">
                                                                     <div class="row">
                                                                         <div class="col">
-                                                                            <div class="mb-3"><label class="form-label"  for="first_name"><strong>First Name</strong></label><input  class="form-control" type="text" id="first_name" name="name" required ></div>
+                                                                            <div class="mb-3"><label class="form-label"  for="first_name"><strong>First Name</strong></label><input  class="form-control" type="text" id="first_name" name="name" pattern="[A-Za-z]{2,20}" required ></div>
                                                                         </div>
                                                                         <div class="col">
-                                                                            <div class="mb-3"><label class="form-label" ><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name" name="lname" required ></div>
+                                                                            <div class="mb-3"><label class="form-label" ><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name" name="lname" pattern="[A-Za-z]{2,20}" required ></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col">
-                                                                            <div class="mb-3"><label class="form-label" for="contact_no"><strong>Contact No.</strong></label><input class="form-control" type="text" id="contact_no" name="contact" required ></div>
+                                                                            <div class="mb-3"><label class="form-label" for="contact_no"><strong>Contact No.</strong></label><input class="form-control" type="tel" id="contact_no" name="contact" minlength="10" maxlength="10" pattern="[0-9]{10}" required ></div>
                                                                         </div>
                                                                         <div class="col">
                                                                             <div class="mb-3"><label class="form-label" ><strong>Email Address</strong></label><input class="form-control" type="email" id="email" name="email" required ></div>
@@ -185,21 +185,21 @@
                                                             </div>
                                                             <div class="card-body">
 
-                                                                    <div class="mb-3"><label class="form-label" for="basic_salary"><strong>Basic Salary</strong></label><input class="form-control" type="text" id="basic_salary" name="salary" required></div>
+                                                                    <div class="mb-3"><label class="form-label" for="basic_salary"><strong>Basic Salary</strong></label><input class="form-control" type="number" id="basic_salary" name="salary" required></div>
                                                                     <div class="row">
                                                                         <div class="col">
-                                                                            <div class="mb-3"><label class="form-label" ><strong>HRA</strong></label><input class="form-control" type="text" id="HRA" name="hra"></div>
+                                                                            <div class="mb-3"><label class="form-label" ><strong>HRA</strong></label><input class="form-control" type="number" id="HRA" name="hra"></div>
                                                                         </div>
                                                                         <div class="col">
-                                                                            <div class="mb-3"><label class="form-label" ><strong>TA</strong></label><input class="form-control" type="text" id="TA" name="ta"></div>
+                                                                            <div class="mb-3"><label class="form-label" ><strong>TA</strong></label><input class="form-control" type="number" id="TA" name="ta"></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col">
-                                                                            <div class="mb-3"><label class="form-label" ><strong>A1</strong></label><input class="form-control" type="text" id="A1" name="a1"></div>
+                                                                            <div class="mb-3"><label class="form-label" ><strong>A1</strong></label><input class="form-control" type="number" id="A1" name="a1"></div>
                                                                         </div>
                                                                         <div class="col">
-                                                                            <div class="mb-3"><label class="form-label" ><strong>A2</strong></label><input class="form-control" type="text" id="A2" name="a2"></div>
+                                                                            <div class="mb-3"><label class="form-label" ><strong>A2</strong></label><input class="form-control" type="number" id="A2" name="a2"></div>
                                                                         </div>
                                                                     </div>
 

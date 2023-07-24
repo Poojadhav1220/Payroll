@@ -66,7 +66,8 @@ public class AdminController
 
     @GetMapping("/salary/")
     public String salary(Model model) {
-        List<Employee> listEmp = empRepo.findAll();
+
+        List<Employee> listEmp = empRepo.findByIsAdmin(false);
         model.addAttribute("listEmp", listEmp);
         model.addAttribute("attendanceRepo", attendanceRepo);
         return "salary";
@@ -86,7 +87,7 @@ public class AdminController
     {
         System.out.println(employee.toString());
         empRepo.save(employee);
-        List<Employee> listEmp = empRepo.findAll();
+        List<Employee> listEmp = empRepo.findByIsAdmin(false);
 
         model.addAttribute("listEmp", listEmp);
         model.addAttribute("msg", "Employee Add Successfully");
@@ -126,7 +127,7 @@ public class AdminController
 
     @GetMapping("/attendance/")
     public String attendance(Model model){
-        List<Employee> listEmp = empRepo.findAll();
+        List<Employee> listEmp = empRepo.findByIsAdmin(false);
 
         model.addAttribute("listEmp", listEmp);
         model.addAttribute("attendanceRepo", attendanceRepo);

@@ -28,8 +28,7 @@ public class Employee {
     String country;
     String exe;
     String password;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    Date date;
+
 
 
     public Employee() {
@@ -50,7 +49,6 @@ public class Employee {
         this.a1 = a1;
         this.a2 = a2;
         this.password=password;
-        this.date = date;
         this.designation = designation;
         this.address = address;
         this.city = city;
@@ -115,9 +113,6 @@ public class Employee {
         this.password = password;
     }
 
-    public Date getDate() {
-        return date;
-    }
 
     public String getLname() {
         return lname;
@@ -199,9 +194,7 @@ public class Employee {
         this.exe = exe;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+
 
     @Override
     public String toString() {
@@ -223,7 +216,6 @@ public class Employee {
                 ", country='" + country + '\'' +
                 ", exe='" + exe + '\'' +
                 ", password='" + password + '\'' +
-                ", date=" + date +
                 '}';
     }
 }
